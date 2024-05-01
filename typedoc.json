@@ -2,7 +2,7 @@
   "$schema": "https://typedoc.org/schema.json",
   "name": "krp-discord-bot",
   "entryPointStrategy": "expand",
-  "entryPoints": ["./src/index.ts"],
+  "entryPoints": ["./src/index.ts", "./src/generator.ts"],
   "sort": ["source-order"],
   "plugin": ["typedoc-material-theme"],
   "themeColor": "#ff1e44",
