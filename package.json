@@ -26,7 +26,7 @@
     "postinstall": "pnpm run generate && pnpm run build",
     "start": "node dist/bundle.js",
     "dev": "pnpm run build && pnpm run start",
-    "build": "pnpm exec rimraf dist && pnpm exec rollup -c",
+    "build": "pnpm exec rimraf dist && pnpm exec rollup -c && pnpm exec rollup -c rollup.generator.config.js",
     "generate": "pnpm exec prisma db push && pnpm exec prisma generate",
     "lint": "pnpm exec eslint --ext .ts",
     "lint:fix": "pnpm exec eslint --ext .ts --fix",
