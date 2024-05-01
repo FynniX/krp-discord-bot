@@ -15,6 +15,32 @@ client.on('ready', async () => {
   app.listen(parseInt(process.env.WEBSERVER_PORT as string), () =>
     console.log(`>> Webserver started on http://localhost:${process.env.WEBSERVER_PORT}/`)
   )
+
+  // Check weather a file expired each hour
+  setInterval(
+    async () => {
+      const lte = new Date(Date.now() - 1000 * 60 * 60).toISOString()
+
+      const files = await prisma.files.findMany({
+        where: {
+          createdAt: { lte },
+          isExpired: false
+        }
+      })
+
+      await prisma.files.updateMany({
+        where: {
+          createdAt: { lte }
+        },
+        data: {
+          isExpired: true
+        }
+      })
+
+      for (const file of files) removeFile(`${file.id.toFixed(0)}.zip`)
+    },
+    1000 * 60 * 60
+  )
 })
 
 client.on('interactionCreate', (interaction) => {
@@ -26,6 +52,8 @@ import './commands/ProfileCommands.js'
 import './commands/MemberCommands.js'
 import './commands/ModsCommands.js'
 import './commands/GenerateCommands.js'
+import { prisma } from './lib/prisma.js'
+import { removeFile } from './utils/files.js'
 
 // Login discord bot
 client.login(process.env.BOT_TOKEN as string)
