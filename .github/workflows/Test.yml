@@ -1,0 +1,26 @@
+name: Test
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Setup environment
+        run: pnpm install
+
+      - name: Run check for linting errors
+        run: pnpm run lint
+
+      - name: Run check for formatting errors
+        run: pnpm run format
