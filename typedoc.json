@@ -1,0 +1,12 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "krp-discord-bot",
+  "entryPointStrategy": "expand",
+  "entryPoints": ["./src/index.ts"],
+  "sort": ["source-order"],
+  "plugin": ["typedoc-material-theme"],
+  "themeColor": "#ff1e44",
+  "navigationLinks": {
+    "GitHub": "https://github.com/FynniX/krp-discord-bot/"
+  }
+}

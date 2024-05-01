@@ -1,0 +1,58 @@
+{
+  "name": "krp-discord-bot",
+  "description": "Discord Bot that can generate encrypted krp mods.",
+  "author": "Fynn Haupt",
+  "version": "1.0.0",
+  "license": "MIT",
+  "keywords": [
+    "Kart",
+    "Racing",
+    "Pro",
+    "Discord",
+    "Bot"
+  ],
+  "type": "module",
+  "main": "dist/index.js",
+  "packageManager": "pnpm@8.15.6",
+  "homepage": "https://github.com/FynniX/krp-discord-bot#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FynniX/krp-discord-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FynniX/krp-discord-bot/issues"
+  },
+  "scripts": {
+    "build": "pnpm exec rimraf dist && pnpm exec rollup -c",
+    "lint": "pnpm exec eslint --ext .ts",
+    "lint:fix": "pnpm exec eslint --ext .ts --fix",
+    "format": "pnpm exec prettier src --check --ignore-unknown",
+    "format:fix": "pnpm exec prettier src --write --ignore-unknown",
+    "docs": "pnpm exec rimraf docs && pnpm exec typedoc",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "eslint --fix",
+      "prettier --write --ignore-unknown"
+    ]
+  },
+  "devDependencies": {
+    "@rollup/plugin-eslint": "^9.0.5",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^20.12.7",
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.17.2",
+    "tslib": "^2.6.2",
+    "typedoc": "^0.25.13",
+    "typedoc-material-theme": "^1.0.2",
+    "typescript": "^5.4.5"
+  }
+}
