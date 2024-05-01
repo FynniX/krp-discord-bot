@@ -17,20 +17,15 @@ export class ProfileCommands {
     name: string,
     interaction: CommandInteraction
   ) {
-    if (!interaction.member) {
-      interaction.reply({ content: ":x: - Discord member wasn't found", ephemeral: true })
-      return
-    }
-
     const member = await prisma.member.findUnique({
-      where: { discord: interaction.member.user.id }
+      where: { discord: interaction.user.id }
     })
 
     try {
       if (!member) {
         await prisma.member.create({
           data: {
-            discord: interaction.member.user.id,
+            discord: interaction.user.id,
             name
           }
         })
@@ -60,13 +55,8 @@ export class ProfileCommands {
     guid: string,
     interaction: CommandInteraction
   ) {
-    if (!interaction.member) {
-      interaction.reply({ content: ":x: - Discord member wasn't found", ephemeral: true })
-      return
-    }
-
     const member = await prisma.member.findUnique({
-      where: { discord: interaction.member?.user.id }
+      where: { discord: interaction.user.id }
     })
 
     // Check weather guid is already set
@@ -82,7 +72,7 @@ export class ProfileCommands {
       if (!member) {
         await prisma.member.create({
           data: {
-            discord: interaction.member.user.id,
+            discord: interaction.user.id,
             guid
           }
         })
