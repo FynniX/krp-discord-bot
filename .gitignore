@@ -50,3 +50,6 @@ codealike.json
 
 # Dist folder
 dist/
+
+# Lock.exe
+lock.exe
