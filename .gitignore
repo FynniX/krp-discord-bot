@@ -42,5 +42,8 @@ jspm_packages/
 .env.production.local
 .env.local
 
+# Prisma files
+prisma/*.db
+
 # Codealike files
 codealike.json
