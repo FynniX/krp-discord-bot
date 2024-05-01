@@ -47,3 +47,6 @@ prisma/*.db
 
 # Codealike files
 codealike.json
+
+# Dist folder
+dist/
