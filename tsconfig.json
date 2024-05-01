@@ -2,9 +2,13 @@
   "compilerOptions": {
     "strict": true,
     "lib": ["ESNext"],
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "target": "ESNext"
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "emitDecoratorMetadata": false, // required
+    "experimentalDecorators": true, // required
+    "esModuleInterop": true, // required
+    "importHelpers": true // required
   },
   "include": ["src"]
 }
