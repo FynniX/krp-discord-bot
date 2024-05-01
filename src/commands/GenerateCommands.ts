@@ -148,7 +148,6 @@ export class GenerateCommands {
     await this.waitForThread()
 
     const child = createGenerator()
-    GenerateCommands.activeThreads++
 
     child.on('message', (message: GeneratorMessage) => {
       switch (message.type) {
@@ -173,14 +172,27 @@ export class GenerateCommands {
           }
 
           child.send({ type: ProcessMessage.End })
-          GenerateCommands.activeThreads--
           break
         default:
           child.send({ type: ProcessMessage.End })
-          GenerateCommands.activeThreads--
       }
     })
 
+    child.on('close', () => {
+      GenerateCommands.activeThreads--
+    })
+
     child.send({ type: ProcessMessage.Start, memberId: member.id, modId: parseInt(modId) })
+    GenerateCommands.activeThreads++
+
+    setTimeout(
+      () => {
+        child.send({ type: ProcessMessage.End })
+        interaction.editReply({
+          content: ':x: - Something went wrong, please contact a admin!'
+        })
+      },
+      1000 * 60 * 5
+    )
   }
 }
