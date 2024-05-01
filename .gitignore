@@ -53,3 +53,8 @@ dist/
 
 # Lock.exe
 lock.exe
+
+# Generator folders
+mods/
+tmp/
+public/
