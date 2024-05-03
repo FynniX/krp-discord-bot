@@ -1,7 +1,7 @@
 import { ApplicationCommandOptionType, CommandInteraction, GuildMember } from 'discord.js'
 import { Discord, Slash, SlashGroup, SlashOption } from 'discordx'
 import { prisma } from '../lib/prisma.js'
-import { guild } from '../utils/guild.js'
+import { getGuild } from '../utils/guild.js'
 
 @Discord()
 @SlashGroup({ name: 'members', description: 'Manage your members' })
@@ -35,7 +35,7 @@ export class MemberCommands {
     })
 
     // Check weather command sender has permissions or is admin
-    if (guild?.ownerId !== interaction.user.id && !commandSender) {
+    if ((await getGuild())?.ownerId !== interaction.user.id && !commandSender) {
       interaction.reply({ content: ":x: - You don't have permission to use this command", ephemeral: true })
       return
     }
@@ -96,7 +96,7 @@ export class MemberCommands {
     })
 
     // Check weather command sender has permissions or is admin
-    if (guild?.ownerId !== interaction.user.id && !commandSender) {
+    if ((await getGuild())?.ownerId !== interaction.user.id && !commandSender) {
       interaction.reply({ content: ":x: - You don't have permission to use this command", ephemeral: true })
       return
     }
@@ -147,7 +147,7 @@ export class MemberCommands {
     })
 
     // Check weather command sender has permissions or is admin
-    if (guild?.ownerId !== interaction.user.id && !commandSender) {
+    if ((await getGuild())?.ownerId !== interaction.user.id && !commandSender) {
       interaction.reply({ content: ":x: - You don't have permission to use this command", ephemeral: true })
       return
     }
@@ -197,7 +197,7 @@ export class MemberCommands {
     })
 
     // Check weather command sender has permissions or is admin
-    if (guild?.ownerId !== interaction.user.id && !commandSender) {
+    if ((await getGuild())?.ownerId !== interaction.user.id && !commandSender) {
       interaction.reply({ content: ":x: - You don't have permission to use this command", ephemeral: true })
       return
     }
@@ -241,7 +241,7 @@ export class MemberCommands {
     })
 
     // Check weather command sender has permissions or is admin
-    if (guild?.ownerId !== interaction.user.id && !commandSender) {
+    if ((await getGuild())?.ownerId !== interaction.user.id && !commandSender) {
       interaction.reply({ content: ":x: - You don't have permission to use this command", ephemeral: true })
       return
     }
@@ -292,7 +292,7 @@ export class MemberCommands {
     })
 
     // Check weather command sender has permissions or is admin
-    if (guild?.ownerId !== interaction.user.id && !commandSender) {
+    if ((await getGuild())?.ownerId !== interaction.user.id && !commandSender) {
       interaction.reply({ content: ":x: - You don't have permission to use this command", ephemeral: true })
       return
     }
@@ -342,7 +342,7 @@ export class MemberCommands {
     })
 
     // Check weather command sender has permissions or is admin
-    if (guild?.ownerId !== interaction.user.id && !commandSender) {
+    if ((await getGuild())?.ownerId !== interaction.user.id && !commandSender) {
       interaction.reply({ content: ":x: - You don't have permission to use this command", ephemeral: true })
       return
     }

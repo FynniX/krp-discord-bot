@@ -13,7 +13,7 @@ import { ModSelection } from '../interfaces/ModSelection.js'
 import { createGenerator } from '../lib/generator.js'
 import { GeneratorMessage } from '../interfaces/GeneratorMessage.js'
 import { ProcessMessage } from '../enums/ProcessMessage.js'
-import { guild, members } from '../utils/guild.js'
+import { getGuild, getMembers } from '../utils/guild.js'
 
 @Discord()
 export class GenerateCommands {
@@ -136,10 +136,10 @@ export class GenerateCommands {
       return
     }
 
-    const guildMember = members?.get(interaction.user.id)
+    const guildMember = (await getMembers())?.get(interaction.user.id)
     const isPatreon = guildMember?.roles.cache.some((r) => r.id === process.env.PATREON_ROLE) ?? false
     const hasAccess = !mods.role ? false : guildMember?.roles.cache.some((r) => r.id === mods.role)
-    if (!hasAccess && !isPatreon && !member.isAdmin && guild?.ownerId !== interaction.user.id) {
+    if (!hasAccess && !isPatreon && !member.isAdmin && (await getGuild())?.ownerId !== interaction.user.id) {
       interaction.editReply({ content: ":x: - You don't have access to this mod" })
       return
     }
