@@ -62,7 +62,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@prisma/client": "^5.13.0",
+    "@prisma/client": "^5.14.0",
     "adm-zip": "^0.5.12",
     "discord.js": "^14.14.1",
     "discordx": "^11.9.2",
