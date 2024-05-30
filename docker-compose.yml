@@ -1,0 +1,19 @@
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - '${WEBSERVER_PORT}:80'
+    volumes:
+      - ./prisma:/app/prisma:rw
+      - ./mods:/app/mods:ro
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      WEBSERVER_URL: ${WEBSERVER_URL}
+      MAX_THREADS: ${MAX_THREADS}
+      BOT_TOKEN: ${BOT_TOKEN}
+      GUILD_ID: ${GUILD_ID}
+      PATREON_ROLE: ${PATREON_ROLE}
+    
