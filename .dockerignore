@@ -4,6 +4,7 @@
 dist/
 docs/
 node_modules/
+prisma/
 .env
 .env.example
 .gitignore
