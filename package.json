@@ -26,7 +26,7 @@
     "prestart": "pnpm run prisma:push",
     "start": "node dist/bundle.js",
     "dev": "pnpm run build && pnpm run start",
-    "build": "pnpm dlx rimraf dist && pnpm exec rollup -c && pnpm exec rollup -c rollup.generator.config.js",
+    "build": "pnpm exec rimraf dist && pnpm exec rollup -c && pnpm exec rollup -c rollup.generator.config.js",
     "prisma:push": "pnpm dlx prisma db push",
     "prisma:generate": " pnpm dlx prisma generate",
     "lint": "pnpm exec eslint --ext .ts",
