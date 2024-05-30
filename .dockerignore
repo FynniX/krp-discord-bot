@@ -1,0 +1,13 @@
+.git/
+.github/
+.husky/
+dist/
+docs/
+node_modules/
+.env
+.env.example
+.gitignore
+.prettierrc
+.eslintrc.json
+LICENSE
+*.md
