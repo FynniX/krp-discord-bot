@@ -22,11 +22,13 @@
     "url": "https://github.com/FynniX/krp-discord-bot/issues"
   },
   "scripts": {
-    "postinstall": "pnpm run generate && pnpm run build",
+    "postinstall": "pnpm run prisma:generate",
+    "prestart": "pnpm run prisma:push",
     "start": "node dist/bundle.js",
     "dev": "pnpm run build && pnpm run start",
-    "build": "pnpm exec rimraf dist && pnpm exec rollup -c && pnpm exec rollup -c rollup.generator.config.js",
-    "generate": "pnpm exec prisma db push && pnpm exec prisma generate",
+    "build": "pnpm dlx rimraf dist && pnpm exec rollup -c && pnpm exec rollup -c rollup.generator.config.js",
+    "prisma:push": "pnpm dlx prisma db push",
+    "prisma:generate": " pnpm dlx prisma generate",
     "lint": "pnpm exec eslint --ext .ts",
     "lint:fix": "pnpm exec eslint --ext .ts --fix",
     "format": "pnpm exec prettier src --check --ignore-unknown",
@@ -53,7 +55,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
-    "prisma": "^5.13.0",
+    "prisma": "^5.14.0",
     "rimraf": "^5.0.5",
     "rollup": "^4.17.2",
     "tslib": "^2.6.2",
@@ -62,7 +64,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@prisma/client": "^5.13.0",
+    "@prisma/client": "^5.14.0",
     "adm-zip": "^0.5.12",
     "discord.js": "^14.14.1",
     "discordx": "^11.9.2",
