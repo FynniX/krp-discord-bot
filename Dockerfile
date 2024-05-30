@@ -5,6 +5,11 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
+# Install wine
+RUN dpkg --add-architecture i386
+RUN apt-get update
+RUN apt-get install -y wine wine32
+
 # Copy all required files
 COPY . /app
 
