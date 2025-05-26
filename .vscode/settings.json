@@ -1,0 +1,14 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "192.168.20.15",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "name": "Local Server",
+      "username": "root",
+      "database": "krp-discord-bot"
+    }
+  ]
+}
