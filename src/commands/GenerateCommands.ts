@@ -220,13 +220,8 @@ export class GenerateCommands {
       interaction.editReply({ content: 'Generating: 99%' });
 
       // Get public url
-      const serverProtocol = getEnv('SERVER_PROTOCOL');
-      const serverDomain = getEnv('SERVER_DOMAIN');
-      const serverPort = getEnv('SERVER_PORT');
-      const url = new URL(
-        relative(publicRoot, publicFile).replaceAll('\\', '/'),
-        `${serverProtocol}://${serverDomain}:${serverPort}`
-      );
+      const serverUrl = getEnv('SERVER_URL');
+      const url = new URL(relative(publicRoot, publicFile).replaceAll('\\', '/'), serverUrl);
 
       interaction.editReply({
         content: `:white_check_mark: - Mod generated successfully!\n\n**Mod Name:** ${mod.name}\n**Version:** ${mod.version}\n**Download URL:** [Click here](${url})\n\n**Warning:** This link will expire soon (When not downloading).`,
