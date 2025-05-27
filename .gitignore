@@ -140,3 +140,5 @@ dist
 mods
 tmp
 lock.exe
+
+*.db

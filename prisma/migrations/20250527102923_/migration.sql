@@ -1,21 +1,17 @@
 -- CreateTable
 CREATE TABLE "User" (
-    "discord" TEXT NOT NULL,
+    "discord" TEXT NOT NULL PRIMARY KEY,
     "guid" TEXT,
-    "admin" BOOLEAN NOT NULL DEFAULT false,
-
-    CONSTRAINT "User_pkey" PRIMARY KEY ("discord")
+    "admin" BOOLEAN NOT NULL DEFAULT false
 );
 
 -- CreateTable
 CREATE TABLE "Mods" (
-    "id" SERIAL NOT NULL,
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
     "version" TEXT NOT NULL,
     "filename" TEXT NOT NULL,
-    "role" TEXT,
-
-    CONSTRAINT "Mods_pkey" PRIMARY KEY ("id")
+    "role" TEXT
 );
 
 -- CreateIndex

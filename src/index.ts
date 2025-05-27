@@ -9,7 +9,7 @@ import './commands/ModsCommands';
 import './commands/ProfileCommands';
 import './commands/UserCommands';
 import { resolve } from 'path';
-import { readdir, rm } from 'fs/promises';
+import { mkdir, readdir, rm } from 'fs/promises';
 import { createReadStream, existsSync } from 'fs';
 
 // Setup Bot
@@ -22,7 +22,9 @@ client.on('ready', async () => {
   // Setup Mods Folder
   setupFolder();
 
+  // Create public folder if it doesn't exist
   const publicRoot = resolve(dirroot, 'public');
+  if (!existsSync(publicRoot)) await mkdir(publicRoot);
 
   // Delete public subfolder every hour
   const emptyPublicFolder = async () => {
