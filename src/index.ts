@@ -65,7 +65,7 @@ client.on('ready', async () => {
 
     // Create stream and remove folder afterwards
     createReadStream(filepath).pipe(res);
-    await rm(folderpath, { recursive: true }).catch(console.error);
+    //await rm(folderpath, { recursive: true }).catch(console.error);
   });
 
   // Start Server
